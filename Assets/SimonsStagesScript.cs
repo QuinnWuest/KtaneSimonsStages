@@ -115,9 +115,9 @@ public class SimonsStagesScript : MonoBehaviour
                 Debug.LogFormat("[Simon's Stages #{0}] There are no solveable modules on the bomb. Module disarmed.", moduleId);
                 StartCoroutine(SolveLights());
             }
-            else if (moduleCount != 1 && solvedModules < stagesToGenerate + 1)  // Replaced (solvedModules != moduleCount)
+            else if (moduleCount != 1 && currentLevel < stagesToGenerate)  // Replaced (solvedModules != moduleCount)
             {
-                if (currentLevel < solvedModules && solvedModules < moduleCount)// Replaced (solvedModules != moduleCount)
+                if (currentLevel < solvedModules)// Replaced (solvedModules != moduleCount)
                 {
                     GenerateSequence();
                 }
@@ -529,7 +529,7 @@ public class SimonsStagesScript : MonoBehaviour
             Debug.LogFormat("[Simon's Stages #{0}] Strike! The module is not yet ready to be solved.", moduleId);
             return;
         }
-        moduleLocked = true;
+        // moduleLocked = true;
         if (secondAttemptLock)
         {
             secondAttemptLock = false;
